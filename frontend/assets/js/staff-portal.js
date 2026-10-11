@@ -115,10 +115,20 @@ const priceFields=()=>[field('laborCost','Labour cost (LKR)','number',{value:0,m
 async function estimates(host){const rows=await list('/api/estimates');for(const r of rows){const c=card(host,r.estimateNumber,'Digital estimate');const line=E('div','wf-page-head');line.append(E('strong','',r.workOrder?.workOrderNumber||'Workshop estimate'),badge('estimate',r.status));c.append(line);info(c,{'Labour':money(r.laborCost),'Parts':money(r.partsCost),'Tax':money(r.taxAmount),'Discount':money(r.discountAmount),'Notes':r.notes});c.append(E('p','wf-money',money(r.totalAmount)));if(role==='Customer'&&idx('estimate',r.status)===1)actions(c,[['Request changes',()=>modal('Request estimate changes',h=>form(h,null,[field('comment','Describe required changes','textarea')],d=>request(`/api/estimates/${r.id}/decision`,'POST',{approve:false,comment:d.comment}),'Send request'))],['Approve estimate',()=>save(`/api/estimates/${r.id}/decision`,'POST',{approve:true,comment:null}),true]]);if(role==='ServiceAdvisor'&&idx('estimate',r.status)===0)c.append(button('Send to customer',()=>save(`/api/estimates/${r.id}/send`),true));}if(!rows.length)empty(host,'No estimates yet.');if(role==='ServiceAdvisor'){const j=await allJobs();form(host,'Prepare estimate',[select('workOrderId','Job card',j.filter(x=>idx('job',x.status)!==5),jobLabel),...priceFields()],d=>request('/api/estimates','POST',d),'Create estimate');}}
 async function invoices(host){
  const rows=await list('/api/invoices');
+ if(role==='Customer'&&window.ShyftPayHere)await window.ShyftPayHere.showReturn(host);
  table(host,role==='Customer'?'Payments & invoices':'Invoice compilation',rows,[['Invoice','invoiceNumber'],['Job',r=>r.workOrder?.workOrderNumber],['Total',r=>money(r.totalAmount)],['Paid',r=>money(r.amountPaid)],['Balance',r=>money(r.balanceDue)],['Status',r=>badge('invoice',r.status)]],(r,b)=>{
   b('View / print',()=>modal('Invoice '+r.invoiceNumber,h=>{info(h,{'Invoice':r.invoiceNumber,'Job':r.workOrder?.workOrderNumber,'Labour':money(r.laborCost),'Parts':money(r.partsCost),'Tax':money(r.taxAmount),'Discount':money(r.discountAmount),'Total':money(r.totalAmount),'Balance':money(r.balanceDue),'Status':state('invoice',r.status),'Notes':r.notes});h.append(button('Print invoice',()=>window.print()));}));
   if(role==='Manager'&&idx('invoice',r.status)===0)b('Approve & issue',()=>save(`/api/invoices/${r.id}/approve`),true);
-  if(role==='Customer'&&[1,2,4].includes(idx('invoice',r.status))&&r.balanceDue>0)b('Record payment',()=>modal('Record test payment',h=>{h.append(E('p','wf-subtle','This records a test payment; it does not charge a card or bank account.'));form(h,null,[field('amount','Amount (LKR)','number',{min:0.01,max:r.balanceDue,value:r.balanceDue}),select('method','Payment method',options(['Cash','Card','Bank transfer','Online']),x=>x.name),field('transactionReference','Reference','text',{optional:true,maxLength:100}),field('notes','Notes','textarea',{optional:true})],d=>request('/api/payments','POST',{...d,invoiceId:r.id,method:Number(d.method)}),'Record payment');}),true);
+  // SHYFT_PAYHERE_SANDBOX
+  if(role==='Customer'&&[1,2,4].includes(idx('invoice',r.status))&&r.balanceDue>0)b('Pay with PayHere (Sandbox)',()=>modal('Pay invoice '+r.invoiceNumber,async h=>{
+   h.append(E('p','wf-subtle','Sandbox testing only: no real money is collected. Your invoice updates after your backend verifies payment directly with PayHere.'));
+   const c=await request('/api/customers/'+auth.customerId);
+   form(h,null,[field('address','Billing address','textarea',{value:c.address,maxLength:500}),field('city','City','text',{maxLength:100})],async d=>{
+    const checkout=await request('/api/payhere/checkout','POST',{invoiceId:r.id,address:d.address,city:d.city});
+    if(!window.ShyftPayHere)throw new Error('Refresh the website with Ctrl+F5 to load the PayHere update.');
+    window.ShyftPayHere.redirect(checkout);
+   },'Continue to PayHere Sandbox',{success:'Opening PayHere Sandbox checkout…'});
+  }),true);
  });
  if(role==='ServiceAdvisor'){
   const[j,e]=await Promise.all([allJobs(),list('/api/estimates')]);const approved=e.filter(x=>idx('estimate',x.status)===2);
@@ -130,7 +140,14 @@ async function invoices(host){
   f.inputs.estimateId.onchange=()=>{const estimate=approved.find(x=>x.id===f.inputs.estimateId.value);for(const name of ['laborCost','partsCost','taxAmount','discountAmount'])f.inputs[name].value=estimate?.[name]??0;f.inputs.notes.value=estimate?.notes||'';};
   f.card.append(E('p','wf-subtle','Only approved estimates belonging to the selected job are available. Choose None to compile an invoice directly.'));
  }
- if(role==='Customer')table(host,'Payment history',await list('/api/payments'),[['Invoice',r=>r.invoice?.invoiceNumber],['Amount',r=>money(r.amount)],['Date',r=>when(r.paymentDate)],['Reference','transactionReference']]);
+ if(role==='Customer')table(host,'Payment history',await list('/api/payments'),[['Invoice',r=>r.invoice?.invoiceNumber],['Amount',r=>money(r.amount)],['Date',r=>when(r.paymentDate)],['Status',r=>['Pending','Completed','Failed','Refunded'][Number(r.status)]||r.status],['Reference','transactionReference'],['Details','notes']],(r,b)=>{
+  // SHYFT_PAYHERE_RETRIEVAL_HISTORY
+  if(String(r.transactionReference||'').startsWith('PH-SBX-'))b('Check PayHere status',async()=>{
+   const result=await request('/api/payhere/orders/SD-SBX-'+r.id.replace(/-/g,'')+'/verify','POST');
+   if(result.status!=='Completed'||result.message.includes('staff review'))throw new Error(result.message);
+   await open(active);
+  });
+ });
 }
 const products=[['Alloy wheels','Upgrade your wheels and specify the required size.','alloy-wheel.jpg'],['Brake upgrades','Choose brake pads and describe your braking requirements.','brake-pads.jpg'],['Suspension upgrades','Improve ride comfort and handling.','shock-absorber.jpg'],['Lighting upgrades','Describe your headlight and visibility requirements.','headlamp.jpg'],['Battery replacement','Specify your vehicle battery requirements.','car-battery.jpg'],['Engine mounts','Describe engine mount replacement or upgrades.','engine-mount.jpg'],['Oil filter','Specify your filter and servicing requirements.','oil-filter.jpg'],['Cooling system','Describe radiator hose and cooling upgrades.','radiator-hose.jpg']];
 async function modifications(host){const rows=await list('/api/modification-requests');if(role==='Customer'){

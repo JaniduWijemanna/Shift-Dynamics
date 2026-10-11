@@ -126,6 +126,10 @@ builder.Services.AddCors(options =>
                 "http://localhost:8080")
             .AllowAnyHeader()
             .AllowAnyMethod();
+        // SHYFT_PAYHERE_ORIGIN: allow only the explicitly configured payment frontend origin.
+        if (Uri.TryCreate(builder.Configuration["PayHere:FrontendUrl"], UriKind.Absolute, out var paymentFrontend)
+            && (paymentFrontend.Scheme == "https" || paymentFrontend.Scheme == "http" && paymentFrontend.IsLoopback))
+            policy.WithOrigins(paymentFrontend.GetLeftPart(UriPartial.Authority));
     });
 });
 
@@ -134,7 +138,20 @@ builder.Services.AddHealthChecks();
 // SHYFT_FIREBASE_WEB_PUSH
 builder.Services.AddSingleton<ShiftDynamics.API.Application.Services.FirebaseWebPushSender>();
 builder.Services.AddHostedService<ShiftDynamics.API.Application.Services.WebPushWorker>();
+builder.Services.AddSingleton<ShiftDynamics.API.Application.Services.PayHereRetrievalClient>();
 var app = builder.Build();
+// SHYFT_DEMO_RESET_COMMAND
+if (builder.Configuration.GetValue<bool>("ResetDemoData"))
+{
+    if (!app.Environment.IsDevelopment())
+        throw new InvalidOperationException("Demo reset is allowed only in Development.");
+    using var demoScope = app.Services.CreateScope();
+    await ShiftDynamics.API.Application.Services.DemoDatabaseReset.RunAsync(
+        demoScope.ServiceProvider.GetRequiredService<ShiftDynamics.API.Infrastructure.Data.ShiftDynamicsDbContext>(),
+        builder.Configuration["DemoReset:ExpectedDatabase"] ?? "");
+    return;
+}
+
 // Run once with --InitializeWebPush=true to create only the two optional push tables.
 if (builder.Configuration.GetValue<bool>("InitializeWebPush"))
 {
