@@ -140,13 +140,49 @@ public class AuthService : IAuthService
         }
         try
         {
-            using var client = new SmtpClient(host, _configuration.GetValue<int?>("Smtp:Port") ?? 587)
-            { EnableSsl = _configuration.GetValue<bool?>("Smtp:EnableSsl") ?? true };
+            using var client = new MailKit.Net.Smtp.SmtpClient();
+            client.Timeout = 20000;
+
+            var port = _configuration.GetValue<int?>("Smtp:Port") ?? 587;
+            var enableSsl = _configuration.GetValue<bool?>("Smtp:EnableSsl") ?? true;
             var username = _configuration["Smtp:Username"];
-            if (!string.IsNullOrWhiteSpace(username)) client.Credentials = new NetworkCredential(username, _configuration["Smtp:Password"]);
-            using var mail = new MailMessage(from, email, "Reset your Shift Dynamics password",
-                $"Use this link to reset your password within one hour:\n{link}\nIf you did not request this, ignore this email.");
-            await client.SendMailAsync(mail);
+            var smtpPassword = _configuration["Smtp:Password"];
+
+            var security = enableSsl
+                ? (port == 465
+                    ? MailKit.Security.SecureSocketOptions.SslOnConnect
+                    : MailKit.Security.SecureSocketOptions.StartTls)
+                : MailKit.Security.SecureSocketOptions.None;
+
+            var mail = new MimeKit.MimeMessage();
+            mail.From.Add(new MimeKit.MailboxAddress("ShyftDynamics", from));
+            mail.To.Add(MimeKit.MailboxAddress.Parse(email));
+            mail.Subject = "Reset your ShyftDynamics password";
+            mail.Body = new MimeKit.TextPart("plain")
+            {
+                Text = $"Use this link to reset your password within one hour:\n{link}\n\nIf you did not request this, ignore this email."
+            };
+
+            _logger.LogInformation("Reset email: connecting to SMTP server.");
+            await client.ConnectAsync(host, port, security);
+
+            if (!string.IsNullOrWhiteSpace(username))
+            {
+                if (string.IsNullOrWhiteSpace(smtpPassword))
+                    throw new InvalidOperationException("SMTP password is missing.");
+
+                _logger.LogInformation("Reset email: authenticating.");
+                await client.AuthenticateAsync(username, smtpPassword);
+            }
+
+            _logger.LogInformation("Reset email: sending.");
+            await client.SendAsync(mail);
+
+            _logger.LogInformation(
+                "Password reset email accepted by SMTP server for user {UserId}.",
+                user.Id);
+
+            await client.DisconnectAsync(true);
         }
         catch (Exception error)
         {

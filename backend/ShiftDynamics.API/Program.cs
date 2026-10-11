@@ -131,7 +131,20 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddHealthChecks();
 
+// SHYFT_FIREBASE_WEB_PUSH
+builder.Services.AddSingleton<ShiftDynamics.API.Application.Services.FirebaseWebPushSender>();
+builder.Services.AddHostedService<ShiftDynamics.API.Application.Services.WebPushWorker>();
 var app = builder.Build();
+// Run once with --InitializeWebPush=true to create only the two optional push tables.
+if (builder.Configuration.GetValue<bool>("InitializeWebPush"))
+{
+    using var setupScope = app.Services.CreateScope();
+    await ShiftDynamics.API.Application.Services.WebPushSchema.InitializeAsync(
+        setupScope.ServiceProvider.GetRequiredService<ShiftDynamics.API.Infrastructure.Data.ShiftDynamicsDbContext>());
+    Console.WriteLine("ShyftDynamics web push tables are ready.");
+    return;
+}
+
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 

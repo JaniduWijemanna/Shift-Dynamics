@@ -1,9 +1,75 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>First Manager Setup</title>
-<style>body{font-family:Arial,sans-serif;background:#f1f5f9;color:#0f172a;margin:0;padding:30px}main{max-width:480px;margin:30px auto;background:white;padding:28px;border-radius:14px}label{display:block;margin-top:16px}input{box-sizing:border-box;width:100%;padding:10px;margin-top:5px;border:1px solid #cbd5e1;border-radius:7px}button{margin-top:22px;padding:12px 18px;background:#0f172a;color:white;border:0;border-radius:8px;cursor:pointer}#message{white-space:pre-wrap}</style><link rel="icon" type="image/png" href="assets/images/shift-dynamics-logo.png.png">
-</head><body><main>
-<h1>First Manager Setup</h1><p>Use this once on the backend PC if your recreated database has no manager account. Existing managers should use <a href="staff-login.html">Staff Login</a>.</p>
-<form id="setup"><label>Full name<input name="fullName" required minlength="2" maxlength="150"></label><label>Email<input name="email" type="email" required maxlength="191"></label><label>Phone<input name="phone" required minlength="7" maxlength="30"></label><label>Employee number<input name="employeeNumber" required maxlength="50"></label><label>Password<input name="password" type="password" required minlength="8" maxlength="100" autocomplete="new-password"></label><button>Create manager account</button></form><p id="message" role="status"></p>
-</main><script src="assets/js/api-client.js"></script><script>
-document.getElementById("setup").onsubmit=async e=>{e.preventDefault();const f=e.target;const b=f.querySelector("button");if(b.disabled)return;b.disabled=true;const m=document.getElementById("message");try{const data={...Object.fromEntries(new FormData(f)),role:2};await ShiftApi.request("/api/integration/bootstrap-manager",{method:"POST",body:JSON.stringify(data)});m.textContent="Manager created. Open Staff Login and use your email and password.";const link=document.createElement("a");link.href="staff-login.html";link.textContent=" Open Staff Login";m.append(link);f.reset();}catch(error){m.textContent=error.message;}finally{b.disabled=false;}};
-</script></body></html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>First Manager Setup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #0f172a;
+            margin: 0;
+            padding: 30px
+        }
+
+        main {
+            max-width: 480px;
+            margin: 30px auto;
+            background: white;
+            padding: 28px;
+            border-radius: 14px
+        }
+
+        label {
+            display: block;
+            margin-top: 16px
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px
+        }
+
+        button {
+            margin-top: 22px;
+            padding: 12px 18px;
+            background: #0f172a;
+            color: white;
+            border: 0;
+            border-radius: 8px;
+            cursor: pointer
+        }
+
+        #message {
+            white-space: pre-wrap
+        }
+    </style>
+    <link rel="icon" type="image/png" href="assets/images/shift-dynamics-logo.png.png">
+</head>
+
+<body>
+    <main>
+        <h1>First Manager Setup</h1>
+        <p>Use this once on the backend PC if your recreated database has no manager account. Existing managers should
+            use <a href="staff-login.html">Staff Login</a>.</p>
+        <form id="setup"><label>Full name<input name="fullName" required minlength="2"
+                    maxlength="150"></label><label>Email<input name="email" type="email" required
+                    maxlength="191"></label><label>Phone<input name="phone" required minlength="7"
+                    maxlength="30"></label><label>Employee number<input name="employeeNumber" required
+                    maxlength="50"></label><label>Password<input name="password" type="password" required minlength="8"
+                    maxlength="100" autocomplete="new-password"></label><button>Create manager account</button></form>
+        <p id="message" role="status"></p>
+    </main>
+    <script src="assets/js/api-client.js"></script>
+    <script>
+        document.getElementById("setup").onsubmit = async e => { e.preventDefault(); const f = e.target; const b = f.querySelector("button"); if (b.disabled) return; b.disabled = true; const m = document.getElementById("message"); try { const data = { ...Object.fromEntries(new FormData(f)), role: 2 }; await ShiftApi.request("/api/integration/bootstrap-manager", { method: "POST", body: JSON.stringify(data) }); m.textContent = "Manager created. Open Staff Login and use your email and password."; const link = document.createElement("a"); link.href = "staff-login.html"; link.textContent = " Open Staff Login"; m.append(link); f.reset(); } catch (error) { m.textContent = error.message; } finally { b.disabled = false; } };
+    </script>
+</body>
+
+</html>

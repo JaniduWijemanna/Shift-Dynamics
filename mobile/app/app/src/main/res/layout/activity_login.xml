@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FixFlow Staff"
+            android:text="ShiftDynamics Staff"
             android:textColor="#0B132B"
             android:textSize="30sp"
             android:textStyle="bold" />

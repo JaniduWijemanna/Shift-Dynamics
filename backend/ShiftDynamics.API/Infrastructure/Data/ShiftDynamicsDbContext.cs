@@ -3,7 +3,7 @@ using ShiftDynamics.API.Domain.Entities;
 
 namespace ShiftDynamics.API.Infrastructure.Data;
 
-public class ShiftDynamicsDbContext : DbContext
+public partial class ShiftDynamicsDbContext : DbContext
 {
     public ShiftDynamicsDbContext(DbContextOptions<ShiftDynamicsDbContext> options)
         : base(options)

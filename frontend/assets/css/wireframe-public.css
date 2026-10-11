@@ -1,5 +1,310 @@
 /* Public-page skin based on the supplied wireframes. Existing form IDs and handlers remain. */
-:root{--sd-navy:#202725;--sd-navy-light:#344039;--sd-navy-soft:#414d45;--sd-orange:#da622f;--sd-orange-dark:#bd4d20;--sd-orange-light:#fff1e9;--sd-background:#f4f5f2;--sd-text:#202725;--sd-text-secondary:#69726e;--sd-border:#dfe4df;--sd-radius-lg:8px;--sd-radius-xl:10px;--sd-login-navy:#202725;--sd-login-navy-light:#344039;--sd-login-orange:#da622f;--sd-login-orange-dark:#bd4d20;--sd-login-bg:#f4f5f2;--sd-login-text:#202725;--sd-login-border:#dfe4df;--sd-login-muted:#69726e}body{background:#f4f5f2!important;color:#202725;font-family:Arial,Helvetica,sans-serif}button,input,textarea,select{font-family:inherit}.sd-login-header,.sd-register-header,.sd-auth-header,.sd-navbar{background:white!important;border-bottom:1px solid #dfe4df!important;box-shadow:none!important}.sd-login-brand-name,.sd-register-brand-name,.sd-brand-name,.sd-login-header a,.sd-register-header a,.sd-auth-header a,.sd-navbar a{color:#202725!important}.sd-login-brand-name span,.sd-register-brand-name span,.sd-brand-name span{color:#da622f!important}.sd-login-back-home,.sd-register-signin,.sd-auth-back,.sd-nav-login{border:1px solid #cdd4cd!important;background:white!important;border-radius:5px!important}.sd-login-main,.sd-register-main{background:#f4f5f2!important}.sd-login-card,.sd-register-card,.sd-forgot-card,.sd-contact-card,.sd-contact-info-card,.sd-hours-card,.sd-map-card,.sd-garage-list-card{background:white!important;border:1px solid #dfe4df!important;border-radius:8px!important;box-shadow:none!important}.sd-login-card-header,.sd-register-card-header{border-bottom:1px solid #dfe4df}.sd-login-page>.sd-login-brand,.sd-brand-panel{background:#e5e9e2!important;color:#202725!important}.sd-login-brand h1,.sd-login-brand p,.sd-brand-panel h1,.sd-brand-panel p,.sd-brand-panel .sd-eyebrow,.sd-login-brand .sd-eyebrow,.sd-role-list div,.sd-feature-list div{color:#202725!important}.sd-login-form-panel{background:white!important}.sd-role-list div{background:white!important;border:1px solid #cdd4cd!important;border-radius:5px!important}.sd-auth-card{border-radius:8px!important;box-shadow:none!important;border:1px solid #dfe4df!important}.sd-hero{background:#eef0eb!important;color:#202725!important}.sd-hero-title,.sd-hero-title span,.sd-hero-description,.sd-hero-trust,.sd-hero-trust span{color:#202725!important}.sd-hero-glow,.sd-contact-hero:before{display:none!important}.sd-hero-badge{background:white!important;color:#69726e!important;border:1px solid #dfe4df!important}.sd-dashboard-preview,.sd-feature-card,.sd-about-card{border-radius:7px!important;box-shadow:none!important;border:1px solid #dfe4df!important}.sd-contact-hero{background:#e9ede7!important;color:#202725!important}.sd-contact-hero h1,.sd-contact-hero p{color:#202725!important}.sd-footer,.sd-login-footer,.sd-register-footer,.sd-auth-footer{background:#eef0eb!important;color:#69726e!important;border-top:1px solid #dfe4df!important}.sd-footer a,.sd-footer h3{color:#202725!important}input,select,textarea{border-radius:4px!important;border-color:#cfd6cf!important;background:#fafbf8!important;color:#202725!important}.sd-primary-button,.sd-login-submit,.sd-register-submit,.sd-submit-button{background:#da622f!important;border-color:#da622f!important;color:white!important;border-radius:5px!important}.sd-contact-submit,.sd-forgot-submit{border-radius:5px!important}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #da622f;outline-offset:3px}@media(max-width:760px){.sd-auth-card{margin:16px}.sd-login-brand{padding:30px 20px!important}.sd-role-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+:root {
+    --sd-navy: #202725;
+    --sd-navy-light: #344039;
+    --sd-navy-soft: #414d45;
+    --sd-orange: #da622f;
+    --sd-orange-dark: #bd4d20;
+    --sd-orange-light: #fff1e9;
+    --sd-background: #f4f5f2;
+    --sd-text: #202725;
+    --sd-text-secondary: #69726e;
+    --sd-border: #dfe4df;
+    --sd-radius-lg: 8px;
+    --sd-radius-xl: 10px;
+    --sd-login-navy: #202725;
+    --sd-login-navy-light: #344039;
+    --sd-login-orange: #da622f;
+    --sd-login-orange-dark: #bd4d20;
+    --sd-login-bg: #f4f5f2;
+    --sd-login-text: #202725;
+    --sd-login-border: #dfe4df;
+    --sd-login-muted: #69726e
+}
+
+body {
+    background: #f4f5f2 !important;
+    color: #202725;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit
+}
+
+.sd-login-header,
+.sd-register-header,
+.sd-auth-header,
+.sd-navbar {
+    background: white !important;
+    border-bottom: 1px solid #dfe4df !important;
+    box-shadow: none !important
+}
+
+.sd-login-brand-name,
+.sd-register-brand-name,
+.sd-brand-name,
+.sd-login-header a,
+.sd-register-header a,
+.sd-auth-header a,
+.sd-navbar a {
+    color: #202725 !important
+}
+
+.sd-login-brand-name span,
+.sd-register-brand-name span,
+.sd-brand-name span {
+    color: #da622f !important
+}
+
+.sd-login-back-home,
+.sd-register-signin,
+.sd-auth-back,
+.sd-nav-login {
+    border: 1px solid #cdd4cd !important;
+    background: white !important;
+    border-radius: 5px !important
+}
+
+.sd-login-main,
+.sd-register-main {
+    background: #f4f5f2 !important
+}
+
+.sd-login-card,
+.sd-register-card,
+.sd-forgot-card,
+.sd-contact-card,
+.sd-contact-info-card,
+.sd-hours-card,
+.sd-map-card,
+.sd-garage-list-card {
+    background: white !important;
+    border: 1px solid #dfe4df !important;
+    border-radius: 8px !important;
+    box-shadow: none !important
+}
+
+.sd-login-card-header,
+.sd-register-card-header {
+    border-bottom: 1px solid #dfe4df
+}
+
+.sd-login-page>.sd-login-brand,
+.sd-brand-panel {
+    background: #e5e9e2 !important;
+    color: #202725 !important
+}
+
+.sd-login-brand h1,
+.sd-login-brand p,
+.sd-brand-panel h1,
+.sd-brand-panel p,
+.sd-brand-panel .sd-eyebrow,
+.sd-login-brand .sd-eyebrow,
+.sd-role-list div,
+.sd-feature-list div {
+    color: #202725 !important
+}
+
+.sd-login-form-panel {
+    background: white !important
+}
+
+.sd-role-list div {
+    background: white !important;
+    border: 1px solid #cdd4cd !important;
+    border-radius: 5px !important
+}
+
+.sd-auth-card {
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    border: 1px solid #dfe4df !important
+}
+
+.sd-hero {
+    background: #eef0eb !important;
+    color: #202725 !important
+}
+
+.sd-hero-title,
+.sd-hero-title span,
+.sd-hero-description,
+.sd-hero-trust,
+.sd-hero-trust span {
+    color: #202725 !important
+}
+
+.sd-hero-glow,
+.sd-contact-hero:before {
+    display: none !important
+}
+
+.sd-hero-badge {
+    background: white !important;
+    color: #69726e !important;
+    border: 1px solid #dfe4df !important
+}
+
+.sd-dashboard-preview,
+.sd-feature-card,
+.sd-about-card {
+    border-radius: 7px !important;
+    box-shadow: none !important;
+    border: 1px solid #dfe4df !important
+}
+
+.sd-contact-hero {
+    background: #e9ede7 !important;
+    color: #202725 !important
+}
+
+.sd-contact-hero h1,
+.sd-contact-hero p {
+    color: #202725 !important
+}
+
+.sd-footer,
+.sd-login-footer,
+.sd-register-footer,
+.sd-auth-footer {
+    background: #eef0eb !important;
+    color: #69726e !important;
+    border-top: 1px solid #dfe4df !important
+}
+
+.sd-footer a,
+.sd-footer h3 {
+    color: #202725 !important
+}
+
+input,
+select,
+textarea {
+    border-radius: 4px !important;
+    border-color: #cfd6cf !important;
+    background: #fafbf8 !important;
+    color: #202725 !important
+}
+
+.sd-primary-button,
+.sd-login-submit,
+.sd-register-submit,
+.sd-submit-button {
+    background: #da622f !important;
+    border-color: #da622f !important;
+    color: white !important;
+    border-radius: 5px !important
+}
+
+.sd-contact-submit,
+.sd-forgot-submit {
+    border-radius: 5px !important
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #da622f;
+    outline-offset: 3px
+}
+
+@media(max-width:760px) {
+    .sd-auth-card {
+        margin: 16px
+    }
+
+    .sd-login-brand {
+        padding: 30px 20px !important
+    }
+
+    .sd-role-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important
+    }
+}
 
 /* Revision 2: match the monochrome public wireframes. */
-:root{--sd-navy:#111;--sd-navy-light:#333;--sd-navy-soft:#444;--sd-orange:#111;--sd-orange-dark:#333;--sd-orange-light:#eee;--sd-background:#fff;--sd-text:#111;--sd-text-secondary:#444;--sd-border:#777;--sd-login-navy:#111;--sd-login-orange:#111;--sd-login-orange-dark:#333;--sd-login-bg:#fff;--sd-login-text:#111;--sd-login-border:#777}body{background:#fff!important;color:#111}.sd-login-brand-name span,.sd-register-brand-name span,.sd-brand-name span{color:#111!important}.sd-hero,.sd-contact-hero,.sd-brand-panel,.sd-login-page>.sd-login-brand{background:#d9d9d9!important}.sd-primary-button,.sd-login-submit,.sd-register-submit,.sd-submit-button,.sd-contact-submit,.sd-forgot-submit{background:#ddd!important;border:1px solid #333!important;color:#111!important;border-radius:4px!important}.sd-login-card,.sd-register-card,.sd-forgot-card,.sd-contact-card,.sd-contact-info-card,.sd-hours-card,.sd-map-card,.sd-garage-list-card,.sd-auth-card{border-color:#444!important}input,select,textarea{background:#eee!important;border-color:#888!important}.sd-footer,.sd-login-footer,.sd-register-footer,.sd-auth-footer{background:#d9d9d9!important}a:focus-visible,button:focus-visible,input:focus-visible{outline-color:#111}
+:root {
+    --sd-navy: #111;
+    --sd-navy-light: #333;
+    --sd-navy-soft: #444;
+    --sd-orange: #111;
+    --sd-orange-dark: #333;
+    --sd-orange-light: #eee;
+    --sd-background: #fff;
+    --sd-text: #111;
+    --sd-text-secondary: #444;
+    --sd-border: #777;
+    --sd-login-navy: #111;
+    --sd-login-orange: #111;
+    --sd-login-orange-dark: #333;
+    --sd-login-bg: #fff;
+    --sd-login-text: #111;
+    --sd-login-border: #777
+}
+
+body {
+    background: #fff !important;
+    color: #111
+}
+
+.sd-login-brand-name span,
+.sd-register-brand-name span,
+.sd-brand-name span {
+    color: #111 !important
+}
+
+.sd-hero,
+.sd-contact-hero,
+.sd-brand-panel,
+.sd-login-page>.sd-login-brand {
+    background: #d9d9d9 !important
+}
+
+.sd-primary-button,
+.sd-login-submit,
+.sd-register-submit,
+.sd-submit-button,
+.sd-contact-submit,
+.sd-forgot-submit {
+    background: #ddd !important;
+    border: 1px solid #333 !important;
+    color: #111 !important;
+    border-radius: 4px !important
+}
+
+.sd-login-card,
+.sd-register-card,
+.sd-forgot-card,
+.sd-contact-card,
+.sd-contact-info-card,
+.sd-hours-card,
+.sd-map-card,
+.sd-garage-list-card,
+.sd-auth-card {
+    border-color: #444 !important
+}
+
+input,
+select,
+textarea {
+    background: #eee !important;
+    border-color: #888 !important
+}
+
+.sd-footer,
+.sd-login-footer,
+.sd-register-footer,
+.sd-auth-footer {
+    background: #d9d9d9 !important
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline-color: #111
+}

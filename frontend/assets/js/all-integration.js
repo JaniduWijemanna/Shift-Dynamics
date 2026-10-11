@@ -519,7 +519,7 @@
           const terms=document.getElementById("vendorTerms");if(terms&&!terms.checked)throw new Error("Accept the terms before registering.");
           await request("/api/vendors/registrations","POST",{businessName:value("businessName"),contactPerson:value("contactPerson"),mobile:value("vendorMobile"),email:value("vendorEmail"),address:value("businessAddress"),specialization:value("specialization"),password});notice(f,"Registration saved. A manager must approve your account before login.");
         }else{
-          await request("/api/auth/forgot-password","POST",{email:value("email")});notice(f,"If the account exists, a reset link will be sent when email is configured. In Development without email, check the backend console for the link.");
+          await request("/api/auth/forgot-password","POST",{email:value("email")});notice(f,"Check your email for a password reset link. If it hasn't arrived, check your spam folder.");
         }
       }catch(error){notice(f,error.message,true);}finally{delete f.dataset.saving;if(b)b.disabled=false;}
     },true);

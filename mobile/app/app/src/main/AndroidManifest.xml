@@ -5,7 +5,7 @@
 
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="FixFlow Staff"
+        android:label="ShiftDynamics Staff"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
