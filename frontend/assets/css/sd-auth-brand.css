@@ -1,0 +1,74 @@
+/* Logo and wordmark on the three separate staff/vendor authentication pages. */
+a.sd-logo-link,
+a.sd-brand-link {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px;
+    width: fit-content !important;
+    max-width: 100%;
+    height: auto !important;
+    overflow: visible !important;
+    text-decoration: none !important;
+}
+
+a.sd-logo-link img,
+a.sd-brand-link img {
+    display: block;
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.sd-auth-wordmark {
+    display: block;
+    color: #ffffff !important;
+    font-family: "Zen Dots", Arial, sans-serif !important;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 400;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.sd-auth-wordmark span {
+    color: #f97316 !important;
+}
+/* Left-align logo and brand name */
+a.sd-logo-link,
+a.sd-brand-link {
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+.sd-auth-wordmark {
+    text-align: left !important;
+}
+/* Larger logo and matching name */
+a.sd-logo-link,
+a.sd-brand-link {
+    padding-top: 20px;
+    gap: 14px;
+}
+
+a.sd-logo-link img,
+a.sd-brand-link img {
+    width: 280px !important;
+    height: auto !important;
+}
+
+.sd-auth-wordmark {
+    font-size: clamp(20px, 3vw, 26px) !important;
+}
+/* Left-align logo and brand name */
+a.sd-logo-link,
+a.sd-brand-link {
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+.sd-auth-wordmark {
+    text-align: left !important;
+}
