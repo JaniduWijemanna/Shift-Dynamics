@@ -24,6 +24,7 @@ public partial class ShiftDynamicsDbContext
 
     private async Task PreparePortalNotificationsAsync(CancellationToken ct)
     {
+        await PrepareExtraAlertsAsync(ct).ConfigureAwait(false);
         ChangeTracker.DetectChanges();
         var changes = ChangeTracker.Entries()
             .Where(e => e.State is EntityState.Added or EntityState.Modified)

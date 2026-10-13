@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Sign in to your Shift Dynamics account."
+    >
+
+    <title>Login | Shift Dynamics</title>
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Main Shift Dynamics Styles -->
+    <link
+        rel="stylesheet"
+        href="assets/css/style.css"
+    >
+
+    <!-- Login Page Styles -->
+    <link
+        rel="stylesheet"
+        href="assets/css/login.css"
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Zen+Dots&display=swap"
+        rel="stylesheet"
+    >
+<link rel="icon" type="image/png" href="assets/images/shift-dynamics-logo.png.png">
+<link rel="stylesheet" href="assets/css/wireframe-public.css?v=20261008-110535-504">
+<link rel="stylesheet" href="assets/css/layout-brand-theme.css?v=20261008-110544-697">
+</head>
+
+
+<body class="sd-login-page">
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <header class="sd-login-header">
+
+        <div class="sd-login-nav">
+
+            <a
+                href="index.html"
+                class="sd-login-brand"
+                aria-label="Shift Dynamics Home"
+            >
+                <img
+                    src="assets/images/shift-dynamics-logo.png.png"
+                    alt="Shift Dynamics"
+                    class="sd-login-logo"
+                >
+                <span class="sd-login-brand-name">
+                    SHIFT <span>DYNAMICS</span>
+                </span>
+            </a>
+
+
+            <a
+                href="index.html"
+                class="sd-back-home"
+            >
+                <i class="bi bi-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         LOGIN PAGE
+         ===================================================== -->
+
+    <main class="sd-login-main">
+
+        <!-- Decorative Background -->
+
+        <div
+            class="sd-login-decoration sd-login-decoration-one"
+            aria-hidden="true"
+        ></div>
+
+        <div
+            class="sd-login-decoration sd-login-decoration-two"
+            aria-hidden="true"
+        ></div>
+
+
+        <div class="sd-login-container">
+
+
+            <!-- =================================================
+                 LEFT SIDE
+                 ================================================= -->
+
+            <section class="sd-login-intro">
+
+                <div class="sd-login-intro-content">
+
+                    <span class="sd-login-badge">
+                        <i class="bi bi-shield-check"></i>
+                        Garage Management Platform
+                    </span>
+
+
+                    <h1>
+                        Welcome Back to
+                        <span>Shift Dynamics.</span>
+                    </h1>
+
+
+                    <p>
+                        Access your workspace, manage vehicle
+                        services, track workshop jobs, and keep
+                        your garage operations moving forward.
+                    </p>
+
+
+                    <div class="sd-login-features">
+
+                        <div class="sd-login-feature">
+
+                            <div class="sd-login-feature-icon">
+                                <i class="bi bi-speedometer2"></i>
+                            </div>
+
+                            <div>
+                                <h3>Role-Based Workspace</h3>
+
+                                <p>
+                                    Access the tools and information
+                                    designed specifically for your role.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="sd-login-feature">
+
+                            <div class="sd-login-feature-icon">
+                                <i class="bi bi-tools"></i>
+                            </div>
+
+                            <div>
+                                <h3>Workshop Management</h3>
+
+                                <p>
+                                    Manage jobs, vehicles, inventory,
+                                    estimates and service progress.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="sd-login-feature">
+
+                            <div class="sd-login-feature-icon">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+
+                            <div>
+                                <h3>Connected Workflow</h3>
+
+                                <p>
+                                    Keep customers, advisors, managers,
+                                    mechanics and suppliers connected.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RIGHT SIDE - LOGIN CARD
+                 ================================================= -->
+
+            <section class="sd-login-form-section">
+
+                <div class="sd-login-card">
+
+                    <div class="sd-login-card-header">
+
+                        <span class="sd-login-card-icon">
+                            <i class="bi bi-person"></i>
+                        </span>
+
+
+                        <div>
+                            <h2>Sign in</h2>
+
+                            <p>
+                                Enter your account details to continue.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOGIN FORM -->
+
+                    <form
+                        id="loginForm"
+                        class="sd-login-form"
+                        novalidate
+                    >
+
+
+                        <!-- EMAIL -->
+
+                        <div class="sd-form-group">
+
+                            <label for="loginEmail">
+                                Email Address
+                            </label>
+
+
+                            <div class="sd-input-wrapper">
+
+                                <i
+                                    class="bi bi-envelope sd-input-icon"
+                                    aria-hidden="true"
+                                ></i>
+
+
+                                <input
+                                    type="email"
+                                    id="loginEmail"
+                                    name="email"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <small
+                                class="sd-field-error"
+                                id="emailError"
+                                aria-live="polite"
+                            ></small>
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="sd-form-group">
+
+                            <div class="sd-password-label-row">
+
+                                <label for="loginPassword">
+                                    Password
+                                </label>
+
+
+                                <a
+                                    href="forgot-password.html"
+                                    class="sd-forgot-password"
+                                    id="forgotPasswordLink"
+                                >
+                                    Forgot password?
+                                </a>
+
+                            </div>
+
+
+                            <div class="sd-input-wrapper">
+
+                                <i
+                                    class="bi bi-lock sd-input-icon"
+                                    aria-hidden="true"
+                                ></i>
+
+
+                                <input
+                                    type="password"
+                                    id="loginPassword"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    required
+                                >
+
+
+                                <button
+                                    type="button"
+                                    class="sd-password-toggle"
+                                    id="passwordToggle"
+                                    aria-label="Show password"
+                                    aria-pressed="false"
+                                >
+                                    <i
+                                        class="bi bi-eye"
+                                        id="passwordToggleIcon"
+                                    ></i>
+                                </button>
+
+                            </div>
+
+
+                            <small
+                                class="sd-field-error"
+                                id="passwordError"
+                                aria-live="polite"
+                            ></small>
+
+                        </div>
+
+
+                        <!-- REMEMBER -->
+
+                        <div class="sd-login-options">
+
+                            <label class="sd-remember-me">
+
+                                <input
+                                    type="checkbox"
+                                    id="rememberMe"
+                                    name="remember"
+                                >
+
+                                <span>
+                                    Remember me
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- GENERAL MESSAGE -->
+
+                        <div
+                            id="loginMessage"
+                            class="sd-login-message"
+                            role="status"
+                            aria-live="polite"
+                        ></div>
+
+
+                        <!-- SUBMIT -->
+
+                        <button
+                            type="submit"
+                            class="sd-login-submit"
+                            id="loginSubmit"
+                        >
+
+                            <span id="loginButtonText">
+                                Sign In
+                            </span>
+
+                            <i
+                                class="bi bi-arrow-right"
+                                id="loginButtonIcon"
+                            ></i>
+
+                        </button>
+
+
+                    </form>
+
+
+                    <!-- REGISTER -->
+
+                    <div class="sd-login-register">
+
+                        <span>
+                            New to Shift Dynamics?
+                        </span>
+
+                        <a href="register.html" id="registerLink">
+                            Create an account
+                        </a>
+
+                    </div>
+
+
+                    <!-- SECURITY -->
+
+                    <div class="sd-login-security">
+
+                        <i class="bi bi-shield-lock"></i>
+
+                        <span>
+                            Secure access to your Shift Dynamics workspace
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="sd-login-footer">
+
+        <p>
+            &copy;
+            <span id="currentYear"></span>
+            Shift Dynamics. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================================
+         LOGIN JAVASCRIPT
+         ===================================================== -->
+
+    <script src="assets/js/login.js"></script>
+
+    <script src="assets/js/api-client.js"></script>
+    <script src="assets/js/auth-integration.js"></script>
+</body>
+
+</html>

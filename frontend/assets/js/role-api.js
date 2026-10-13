@@ -1,9 +1,9 @@
-﻿(() => {
+(() => {
  const auth=ShiftApi.auth(); const page=location.pathname;
  const text=(selector,value)=>{const e=document.querySelector(selector);if(e)e.textContent=value;};
  const state=(message,error=false)=>{let e=document.querySelector(".sd-api-status");if(!e){e=document.createElement("p");e.className="sd-api-status";document.querySelector(".sd-dashboard-content, main")?.prepend(e);}e.textContent=message;e.hidden=!message;e.style.color=error?"#b42318":"";};
  const live=(title,heads,rows)=>{let host=document.querySelector(".sd-api-live-data");if(!host){host=document.createElement("section");host.className="sd-table-card sd-api-live-data";document.querySelector(".sd-dashboard-content")?.prepend(host);}host.innerHTML=`<div class="sd-panel-header"><h3>${title}</h3></div><div class="sd-table-responsive"><table><thead><tr>${heads.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>${rows.length?rows.map(r=>`<tr>${r.map(c=>`<td>${c??"Ã¢â‚¬â€"}</td>`).join("")}</tr>`).join(""):`<tr><td colspan="${heads.length}">No records found.</td></tr>`}</tbody></table></div>`;};
- const guarded=role=>{if(!auth||auth.role!==role){ShiftApi.clear();location.href=page.includes("dashboard.html")?"../staff-login.html":"staff-login.html";return false;}return true;};
+ const guarded=role=>{if(!auth||auth.role!==role){ShiftApi.clear();location.href=role==="Vendor"?(page.includes("dashboard.html")?"../vendor-login.html":"vendor-login.html"):(page.includes("dashboard.html")?"../staff-login.html":"staff-login.html");return false;}return true;};
  async function manager(){
     if(!guarded("Manager")) return;
 

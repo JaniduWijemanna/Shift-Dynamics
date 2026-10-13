@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Staff & Vendor Login | Shift Dynamics
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="assets/css/staff-login.css"
+    >
+
+<link rel="icon" type="image/png" href="assets/images/shift-dynamics-logo.png.png">
+<link rel="stylesheet" href="assets/css/wireframe-public.css?v=20261008-110535-504">
+<link rel="stylesheet" href="assets/css/layout-brand-theme.css?v=20261008-110544-697">
+</head>
+
+<body>
+
+
+<main class="sd-login-page">
+
+
+    <!-- =====================================================
+         BRAND SIDE
+         ===================================================== -->
+
+    <section class="sd-login-brand">
+
+        <a
+            href="index.html"
+            class="sd-logo-link"
+            aria-label="Shift Dynamics Home"
+        >
+
+            <img
+                src="assets/images/shift-dynamics-logo.png.png"
+                alt="Shift Dynamics"
+                class="sd-logo"
+            >
+
+        </a>
+
+
+        <div class="sd-brand-content">
+
+            <span class="sd-eyebrow">
+                Workshop Operations Portal
+            </span>
+
+            <h1>
+                Staff & Vendor
+                Access
+            </h1>
+
+            <p>
+                Secure access for workshop staff and
+                registered spare-parts vendors.
+            </p>
+
+
+            <div class="sd-role-list">
+
+                <div>
+                    <i class="bi bi-person-workspace"></i>
+                    Service Advisor
+                </div>
+
+                <div>
+                    <i class="bi bi-briefcase"></i>
+                    Manager
+                </div>
+
+                <div>
+                    <i class="bi bi-tools"></i>
+                    Mechanic
+                </div>
+
+                <div>
+                    <i class="bi bi-box-seam"></i>
+                    Storekeeper
+                </div>
+
+                <div>
+                    <i class="bi bi-truck"></i>
+                    Spare Parts Vendor
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LOGIN FORM
+         ===================================================== -->
+
+    <section class="sd-login-form-panel">
+
+
+        <div class="sd-form-wrapper">
+
+
+            <a
+                href="index.html"
+                class="sd-back-link"
+            >
+                <i class="bi bi-arrow-left"></i>
+                Back to Home
+            </a>
+
+
+            <div class="sd-form-heading">
+
+                <span class="sd-eyebrow">
+                    Authorized Access
+                </span>
+
+                <h2>
+                    Sign in to your portal
+                </h2>
+
+                <p>
+                    Enter your registered staff or vendor
+                    account credentials.
+                </p>
+
+            </div>
+
+
+            <form
+                id="staffLoginForm"
+                novalidate
+            >
+
+
+                <!-- EMAIL -->
+
+                <div class="sd-field">
+
+                    <label for="staffEmail">
+                        Email Address
+                    </label>
+
+                    <div class="sd-input-wrap">
+
+                        <i class="bi bi-envelope"></i>
+
+                        <input
+                            id="staffEmail"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            placeholder="name@shiftdynamics.com"
+                            required
+                        >
+
+                    </div>
+
+                    <small
+                        class="sd-error"
+                        id="staffEmailError"
+                    ></small>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="sd-field">
+
+                    <label for="staffPassword">
+                        Password
+                    </label>
+
+                    <div class="sd-input-wrap">
+
+                        <i class="bi bi-lock"></i>
+
+                        <input
+                            id="staffPassword"
+                            name="password"
+                            type="password"
+                            autocomplete="current-password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="sd-password-toggle"
+                            id="staffPasswordToggle"
+                            aria-label="Show password"
+                        >
+
+                            <i class="bi bi-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                    <small
+                        class="sd-error"
+                        id="staffPasswordError"
+                    ></small>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="sd-login-button"
+                    id="staffLoginButton"
+                >
+
+                    <span id="staffLoginButtonText">
+                        Sign In
+                    </span>
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </button>
+
+
+                <div
+                    class="sd-login-message"
+                    id="staffLoginMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+
+            </form>
+
+
+
+            <div class="sd-security-note">
+
+                <i class="bi bi-shield-check"></i>
+
+                <div>
+
+                    <strong>
+                        Role-based access
+                    </strong>
+
+                    <p>
+                        Your account role determines which
+                        workspace you can access.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="sd-vendor-register">
+
+                <span>
+                    Spare-parts supplier?
+                </span>
+
+                <a href="vendor-register.html">
+                    Register as a Vendor
+                </a>
+
+            </div>
+
+
+
+            <div class="sd-customer-login">
+
+                <span>
+                    Are you a customer?
+                </span>
+
+                <a href="login.html">
+                    Customer Login
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script src="assets/js/staff-login.js"></script>
+
+    <script src="assets/js/api-client.js"></script>
+    <script src="assets/js/auth-integration.js"></script>
+</body>
+
+</html>

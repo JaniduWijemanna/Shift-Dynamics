@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Shift Dynamics - Garage and Auto Care Management System">
+
+    <title>Shift Dynamics | Garage Management</title>
+
+
+    <!-- Google Fonts -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Zen+Dots&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- Shift Dynamics CSS -->
+    <link
+        rel="stylesheet"
+        href="assets/css/style.css">
+
+    <link rel="stylesheet" href="assets/css/interactive-bg.css">
+    
+
+<link rel="icon" type="image/png" href="assets/images/shift-dynamics-logo.png.png">
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+
+<nav class="sd-navbar">
+
+    <div class="container sd-nav-container">
+
+
+        <!-- BRAND -->
+
+        <a href="index.html"
+           class="sd-brand">
+
+            <img
+                src="assets/images/shift-dynamics-logo.png.png"
+                alt="Shift Dynamics"
+                class="sd-logo">
+            <span class="sd-brand-name">
+            SHIFT <span>DYNAMICS</span>
+            </span>
+        </a>
+
+
+        <!-- DESKTOP NAVIGATION -->
+
+        <div class="sd-navigation">
+
+            <a href="#home"
+               class="sd-nav-link active">
+                Home
+            </a>
+
+            <a href="#features"
+               class="sd-nav-link">
+                Features
+            </a>
+
+            <a href="#about"
+               class="sd-nav-link">
+                About
+            </a>
+
+            <div class="sd-login-menu">
+                <a href="contact.html"
+                class="sd-nav-link">
+                    Contact
+                </a>
+
+            <button
+                type="button"
+                class="sd-nav-login sd-login-toggle"
+                aria-expanded="false"
+                aria-controls="sdLoginDropdown"
+            >
+                <i class="bi bi-box-arrow-in-right"></i>
+
+                Login
+
+                <i class="bi bi-chevron-down sd-login-chevron"></i>
+            </button>
+
+
+            <div
+                class="sd-login-dropdown"
+                id="sdLoginDropdown"
+            >
+
+                <a href="login.html">
+                    <i class="bi bi-person"></i>
+
+                    <div>
+                        <strong>Customer Login</strong>
+                        <span>Vehicle owners and customers</span>
+                    </div>
+                </a>
+
+
+                <a href="staff-login.html">
+                    <i class="bi bi-people"></i>
+
+                    <div>
+                        <strong>Staff & Vendor Login</strong>
+                        <span>Workshop staff and spare-parts vendors</span>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+
+        </div>
+
+
+        <!-- MOBILE MENU -->
+
+        <button
+            class="sd-mobile-menu"
+            id="mobileMenuButton"
+            type="button"
+            aria-label="Open navigation">
+
+            <i class="bi bi-list"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- MOBILE NAVIGATION -->
+
+    <div
+        class="sd-mobile-navigation"
+        id="mobileNavigation">
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#features">
+            Features
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="login.html">
+            <i class="bi bi-box-arrow-in-right"></i>
+            Login
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section
+    id="home"
+    class="sd-hero">
+    <!-- Decorative background -->
+
+    <div class="sd-hero-glow sd-glow-one"></div>
+
+    <div class="sd-hero-glow sd-glow-two"></div>
+
+
+    <div class="container">
+
+
+        <div class="row align-items-center">
+
+
+            <!-- HERO CONTENT -->
+
+            <div
+                class="col-lg-7 sd-hero-content">
+
+
+                <!-- BADGE -->
+
+                <div class="sd-hero-badge">
+
+                    <span class="sd-pulse-dot"></span>
+
+                    <i class="bi bi-tools"></i>
+
+                    Garage & Auto Care Management
+
+                </div>
+
+
+                <!-- MAIN TITLE -->
+
+                <h1 class="sd-hero-title">
+
+                    <span class="title-navy">
+                        Keep Your Vehicle Moving.
+                    </span>
+
+                    <span class="title-orange">
+                        Drive With Confidence.
+                    </span>
+
+                    <span class="title-orange">
+                        
+                    </span>
+
+                </h1>
+
+
+                <!-- DESCRIPTION -->
+
+                <p class="sd-hero-description">
+
+                    Shift Dynamics provides a centralized
+                    platform for managing garage operations,
+                    customers, vehicles, appointments,
+                    services and daily workshop activities.
+
+                </p>
+
+
+                <!-- BUTTONS -->
+
+                <div class="sd-hero-buttons">
+
+
+                    <!-- GET STARTED -->
+
+                    <a
+                        href="login.html"
+                        class="sd-action-button sd-button-primary">
+
+                        <span>
+                            Get Started
+                        </span>
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+
+                    <!-- EXPLORE -->
+
+                    <a
+                        href="#features"
+                        class="sd-action-button sd-button-outline">
+
+                        <span>
+                            Explore Features
+                        </span>
+
+                        <i class="bi bi-arrow-down"></i>
+
+                    </a>
+
+
+                    <!-- EMERGENCY -->
+
+                    <a
+                        href="emergency.html"
+                        class="sd-action-button sd-button-emergency">
+
+                        <span>
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+
+                            24/7 Emergency Assistance
+                        </span>
+
+                        <i class="bi bi-arrow-up-right"></i>
+
+                    </a>
+
+                </div>
+
+
+                <!-- TRUST INFO -->
+
+                <div class="sd-hero-trust">
+
+                    <div class="sd-trust-item">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        Easy to use
+
+                    </div>
+
+
+                    <div class="sd-trust-item">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        Centralized management
+
+                    </div>
+
+
+                    <div class="sd-trust-item">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        Built for garages
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- HERO CARD -->
+
+            <div
+                class="col-lg-5">
+
+
+                <div class="sd-workshop-card">
+
+
+                    <!-- Floating icon -->
+
+                    <div class="sd-floating-icon icon-one">
+                        <i class="bi bi-wrench-adjustable"></i>
+                    </div>
+
+                    <div class="sd-floating-icon icon-two">
+                        <i class="bi bi-car-front-fill"></i>
+                    </div>
+
+
+                    <!-- Main icon -->
+
+                    <div class="sd-workshop-icon">
+
+                        <i class="bi bi-car-front-fill"></i>
+
+                    </div>
+
+
+                    <h2 class="sd-workshop-title">
+
+                        Your Workshop,
+
+                        <br>
+
+                        <span>
+                            Connected.
+                        </span>
+
+                    </h2>
+
+
+                    <p class="sd-workshop-description">
+
+                        Keep your garage operations
+                        organized from one place.
+
+                    </p>
+
+
+                    <!-- MINI STATS -->
+
+                    <div class="row g-3">
+
+
+                        <div class="col-6">
+
+                            <div class="sd-workshop-stat">
+
+                                <div class="sd-stat-icon">
+
+                                    <i class="bi bi-people-fill"></i>
+
+                                </div>
+
+                                <strong>
+                                    Customers
+                                </strong>
+
+                                <small>
+                                    Manage records
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-6">
+
+                            <div class="sd-workshop-stat">
+
+                                <div class="sd-stat-icon">
+
+                                    <i class="bi bi-car-front-fill"></i>
+
+                                </div>
+
+                                <strong>
+                                    Vehicles
+                                </strong>
+
+                                <small>
+                                    Track services
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CARD STATUS -->
+
+                    <div class="sd-card-status">
+
+                        <span class="sd-status-dot"></span>
+
+                        Workshop management simplified
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+     ===================================================== -->
+
+<section
+    id="features"
+    class="sd-features">
+
+
+    <div class="container">
+
+
+        <!-- SECTION HEADER -->
+
+        <div class="sd-section-header">
+
+            <div class="sd-section-label">
+                Core Features
+            </div>
+
+            <h2 class="sd-section-title">
+
+                Everything You Need for Better Vehicle Care
+
+            </h2>
+
+            <p class="sd-section-description">
+
+                A centralized system designed to make
+                everyday garage operations simpler,
+                faster and more organized.
+
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE GRID -->
+
+        <div class="row g-4">
+
+
+            <!-- CUSTOMER -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="sd-feature-card">
+
+                    <div class="sd-feature-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+
+                    <h3>
+                        Customer Management
+                    </h3>
+
+                    <p>
+                        Manage customer information,
+                        service history and important
+                        records from one place.
+                    </p>
+
+                    <span class="sd-feature-number">
+                        01
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- VEHICLE -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="sd-feature-card">
+
+                    <div class="sd-feature-icon">
+                        <i class="bi bi-car-front-fill"></i>
+                    </div>
+
+                    <h3>
+                        Vehicle Management
+                    </h3>
+
+                    <p>
+                        Keep track of customer vehicles,
+                        registration details and
+                        service history.
+                    </p>
+
+                    <span class="sd-feature-number">
+                        02
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- APPOINTMENTS -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="sd-feature-card">
+
+                    <div class="sd-feature-icon">
+                        <i class="bi bi-calendar-check-fill"></i>
+                    </div>
+
+                    <h3>
+                        Appointments
+                    </h3>
+
+                    <p>
+                        Organize workshop appointments
+                        and keep daily operations
+                        running smoothly.
+                    </p>
+
+                    <span class="sd-feature-number">
+                        03
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOB MANAGEMENT -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="sd-feature-card">
+
+                    <div class="sd-feature-icon">
+                        <i class="bi bi-wrench-adjustable"></i>
+                    </div>
+
+                    <h3>
+                        Job Management
+                    </h3>
+
+                    <p>
+                        Track vehicle jobs, service
+                        progress and workshop activities.
+                    </p>
+
+                    <span class="sd-feature-number">
+                        04
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- INVENTORY -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="sd-feature-card">
+
+                    <div class="sd-feature-icon">
+                        <i class="bi bi-box-seam-fill"></i>
+                    </div>
+
+                    <h3>
+                        Inventory
+                    </h3>
+
+                    <p>
+                        Monitor parts, stock levels and
+                        inventory required for daily
+                        garage operations.
+                    </p>
+
+                    <span class="sd-feature-number">
+                        05
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- DASHBOARD -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="sd-feature-card">
+
+                    <div class="sd-feature-icon">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+
+                    <h3>
+                        Dashboard
+                    </h3>
+
+                    <p>
+                        Get a clear overview of important
+                        workshop activities and business
+                        information.
+                    </p>
+
+                    <span class="sd-feature-number">
+                        06
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EMERGENCY FEATURE
+     ===================================================== -->
+
+<section class="sd-emergency-home">
+
+    <div class="container">
+
+        <div class="sd-emergency-banner">
+
+
+            <div class="sd-emergency-content">
+
+
+                <div class="sd-emergency-icon">
+
+                    <i class="bi bi-shield-exclamation"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span class="sd-emergency-label">
+                        PUBLIC EMERGENCY SERVICE
+                    </span>
+
+                    <h2>
+                        Need help on the road?
+                    </h2>
+
+                    <p>
+                        Find nearby emergency services
+                        and assistance when you need it.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="emergency.html"
+                class="sd-emergency-button">
+
+                <span>
+                    24/7 Emergency Assistance
+                </span>
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+     ===================================================== -->
+
+<section
+    id="about"
+    class="sd-about">
+
+
+    <div class="container">
+
+
+        <div class="row align-items-center g-5">
+
+
+            <!-- ABOUT TEXT -->
+
+            <div class="col-lg-6">
+
+
+                <div class="sd-section-label">
+                    About Shift Dynamics
+                </div>
+
+
+                <h2 class="sd-section-title">
+
+                    Keep Your Vehicle Moving.
+                    Powered by <span style="color: #F97316;">Shift Dynamics.</span>
+
+                </h2>
+
+
+                <p class="sd-about-text">
+
+                    Shift Dynamics is designed to centralize
+                    garage and auto care management into
+                    one connected system.
+
+                </p>
+
+
+                <p class="sd-about-text">
+
+                    From booking your service to tracking repairs
+                    and managing your vehicle, Shift Dynamics
+                    makes every step of your automotive care
+                    simple, clear and convenient.
+
+                </p>
+
+
+                <a
+                    href="#features"
+                    class="sd-about-link">
+
+                    Explore the system
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <!-- ABOUT CARD -->
+
+            <div class="col-lg-6">
+
+
+                <div class="sd-about-card">
+
+
+                    <div class="sd-about-item">
+
+                        <div class="sd-about-icon">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Centralized Management
+                            </h4>
+
+                            <p>
+                                Keep important workshop
+                                information together.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sd-about-divider"></div>
+
+
+                    <div class="sd-about-item">
+
+                        <div class="sd-about-icon">
+                            <i class="bi bi-layout-text-window-reverse"></i>
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Simple Interface
+                            </h4>
+
+                            <p>
+                                Designed for efficient
+                                everyday use.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sd-about-divider"></div>
+
+
+                    <div class="sd-about-item">
+
+                        <div class="sd-about-icon">
+                            <i class="bi bi-phone"></i>
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Responsive Design
+                            </h4>
+
+                            <p>
+                                Works across different
+                                screen sizes and devices.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="sd-footer sd-shared-footer">
+
+    <div class="container">
+
+        <div class="sd-footer-inner">
+
+            <div class="sd-shared-footer-brand">
+
+                <img
+                    src="assets/images/shift-dynamics-logo.png.png"
+                    alt="Shift Dynamics"
+                >
+
+                <div>
+
+                    <strong>
+                        SHIFT <span>DYNAMICS</span>
+                    </strong>
+
+                    <small>
+                        Smart Garage & Auto Care Management
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="sd-footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="#features">
+                    Features
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="emergency.html">
+                    Emergency
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="sd-footer-bottom">
+
+            <span>
+                &copy; 2026 Shift Dynamics.
+            </span>
+
+            <span>
+                Smart Garage & Auto Care Management
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- Bootstrap JavaScript -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- Shift Dynamics JavaScript -->
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/interactive-bg.js"></script>
+</body>
+
+</html>

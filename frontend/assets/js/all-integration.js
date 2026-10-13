@@ -535,12 +535,12 @@
     publicForms();identity();
     const path=location.pathname;const auth=api.auth();
     document.addEventListener("click",e=>{
-      const a=e.target instanceof Element?e.target.closest('.sd-logout-link,[data-logout],a[href="../staff-login.html"],a[href="../login.html"]'):null;
-      if(a){e.preventDefault();e.stopImmediatePropagation();api.clear();location.href=path.includes("/customer/")?"../login.html":"../staff-login.html";}
+      const a=e.target instanceof Element?e.target.closest('.sd-logout-link,[data-logout],a[href="../staff-login.html"],a[href="../vendor-login.html"],a[href="../login.html"]'):null;
+      if(a){e.preventDefault();e.stopImmediatePropagation();api.clear();location.href=path.includes("/customer/")?"../login.html":path.includes("/vendor/")?"../vendor-login.html":"../staff-login.html";}
     },true);
     const staffMatch=path.match(/\/(advisor|manager|mechanic|storekeeper|vendor)\/dashboard\.html$/);
     if(staffMatch){const roles={advisor:"ServiceAdvisor",manager:"Manager",mechanic:"Mechanic",storekeeper:"Storekeeper",vendor:"Vendor"};const expected=roles[staffMatch[1]];
-      if(!auth||(auth.role!==expected&&!(expected==="Manager"&&auth.role==="Admin"))){location.href="../staff-login.html";return;}
+      if(!auth||(auth.role!==expected&&!(expected==="Manager"&&auth.role==="Admin"))){location.href=expected==="Vendor"?"../vendor-login.html":"../staff-login.html";return;}
       await staffWorkspace(expected);return;
     }
     if(path.includes("/customer/")){

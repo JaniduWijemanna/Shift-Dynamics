@@ -140,6 +140,17 @@ builder.Services.AddSingleton<ShiftDynamics.API.Application.Services.FirebaseWeb
 builder.Services.AddHostedService<ShiftDynamics.API.Application.Services.WebPushWorker>();
 builder.Services.AddSingleton<ShiftDynamics.API.Application.Services.PayHereRetrievalClient>();
 var app = builder.Build();
+// SHYFT_INITIALIZE_EXTRA_ALERTS
+if (builder.Configuration.GetValue<bool>("InitializeExtraAlerts"))
+{
+    if (!app.Environment.IsDevelopment()) throw new InvalidOperationException("Initialize extra alerts in Development only.");
+    using var alertsScope=app.Services.CreateScope();
+    var alertsDb=alertsScope.ServiceProvider.GetRequiredService<ShiftDynamics.API.Infrastructure.Data.ShiftDynamicsDbContext>();
+    var alertsCount=await alertsDb.InitializeExistingLowStockAlertsAsync();
+    Console.WriteLine($"Existing stock checked: {alertsCount} low-stock notifications added.");
+    return;
+}
+
 // SHYFT_DEMO_RESET_COMMAND
 if (builder.Configuration.GetValue<bool>("ResetDemoData"))
 {

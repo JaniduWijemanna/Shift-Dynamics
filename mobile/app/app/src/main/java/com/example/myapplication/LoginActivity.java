@@ -22,7 +22,7 @@ public class LoginActivity extends Activity {
 
     // Change this URL when the backend PC's IP address changes.
     private static final String API_BASE_URL =
-            "http://192.168.8.141:5174";
+            "http://172.20.10.13:5174";
 
     private int epoch = 0;
 

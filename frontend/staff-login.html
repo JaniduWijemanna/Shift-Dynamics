@@ -5,24 +5,13 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Staff & Vendor Login | Shift Dynamics
-    </title>
+    <title>Staff Login | ShyftDynamics</title>
 
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link
-        rel="stylesheet"
-        href="assets/css/staff-login.css"
-    >
+    <link rel="stylesheet" href="assets/css/staff-login.css">
 
 <link rel="icon" type="image/png" href="assets/images/shift-dynamics-logo.png.png">
 <link rel="stylesheet" href="assets/css/wireframe-public.css?v=20261008-110535-504">
@@ -41,17 +30,9 @@
 
     <section class="sd-login-brand">
 
-        <a
-            href="index.html"
-            class="sd-logo-link"
-            aria-label="Shift Dynamics Home"
-        >
+        <a href="index.html" class="sd-logo-link" aria-label="Shift Dynamics Home">
 
-            <img
-                src="assets/images/shift-dynamics-logo.png.png"
-                alt="Shift Dynamics"
-                class="sd-logo"
-            >
+            <img src="assets/images/shift-dynamics-logo.png.png" alt="Shift Dynamics" class="sd-logo">
 
         </a>
 
@@ -62,15 +43,9 @@
                 Workshop Operations Portal
             </span>
 
-            <h1>
-                Staff & Vendor
-                Access
-            </h1>
+            <h1>Staff Access</h1>
 
-            <p>
-                Secure access for workshop staff and
-                registered spare-parts vendors.
-            </p>
+            <p>Secure access for Service Advisors, Managers, Mechanics and Storekeepers.</p>
 
 
             <div class="sd-role-list">
@@ -95,12 +70,7 @@
                     Storekeeper
                 </div>
 
-                <div>
-                    <i class="bi bi-truck"></i>
-                    Spare Parts Vendor
                 </div>
-
-            </div>
 
         </div>
 
@@ -118,10 +88,7 @@
         <div class="sd-form-wrapper">
 
 
-            <a
-                href="index.html"
-                class="sd-back-link"
-            >
+            <a href="index.html" class="sd-back-link">
                 <i class="bi bi-arrow-left"></i>
                 Back to Home
             </a>
@@ -137,18 +104,12 @@
                     Sign in to your portal
                 </h2>
 
-                <p>
-                    Enter your registered staff or vendor
-                    account credentials.
-                </p>
+                <p>Enter your registered staff account credentials.</p>
 
             </div>
 
 
-            <form
-                id="staffLoginForm"
-                novalidate
-            >
+            <form id="staffLoginForm" novalidate>
 
 
                 <!-- EMAIL -->
@@ -163,21 +124,11 @@
 
                         <i class="bi bi-envelope"></i>
 
-                        <input
-                            id="staffEmail"
-                            name="email"
-                            type="email"
-                            autocomplete="email"
-                            placeholder="name@shiftdynamics.com"
-                            required
-                        >
+                        <input id="staffEmail" name="email" type="email" autocomplete="email" placeholder="name@shiftdynamics.com" required>
 
                     </div>
 
-                    <small
-                        class="sd-error"
-                        id="staffEmailError"
-                    ></small>
+                    <small class="sd-error" id="staffEmailError"></small>
 
                 </div>
 
@@ -195,21 +146,9 @@
 
                         <i class="bi bi-lock"></i>
 
-                        <input
-                            id="staffPassword"
-                            name="password"
-                            type="password"
-                            autocomplete="current-password"
-                            placeholder="Enter your password"
-                            required
-                        >
+                        <input id="staffPassword" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
 
-                        <button
-                            type="button"
-                            class="sd-password-toggle"
-                            id="staffPasswordToggle"
-                            aria-label="Show password"
-                        >
+                        <button type="button" class="sd-password-toggle" id="staffPasswordToggle" aria-label="Show password">
 
                             <i class="bi bi-eye"></i>
 
@@ -217,20 +156,13 @@
 
                     </div>
 
-                    <small
-                        class="sd-error"
-                        id="staffPasswordError"
-                    ></small>
+                    <small class="sd-error" id="staffPasswordError"></small>
 
                 </div>
 
 
 
-                <button
-                    type="submit"
-                    class="sd-login-button"
-                    id="staffLoginButton"
-                >
+                <button type="submit" class="sd-login-button" id="staffLoginButton">
 
                     <span id="staffLoginButtonText">
                         Sign In
@@ -241,19 +173,15 @@
                 </button>
 
 
-                <div
-                    class="sd-login-message"
-                    id="staffLoginMessage"
-                    role="status"
-                    aria-live="polite"
-                ></div>
+                <div class="sd-login-message" id="staffLoginMessage" role="status" aria-live="polite"></div>
 
 
             </form>
 
 
 
-            <div class="sd-security-note">
+            <p class="sd-customer-login"><a href="forgot-password.html">Forgot Password?</a></p>
+<div class="sd-security-note">
 
                 <i class="bi bi-shield-check"></i>
 
@@ -269,20 +197,6 @@
                     </p>
 
                 </div>
-
-            </div>
-
-
-
-            <div class="sd-vendor-register">
-
-                <span>
-                    Spare-parts supplier?
-                </span>
-
-                <a href="vendor-register.html">
-                    Register as a Vendor
-                </a>
 
             </div>
 
@@ -309,10 +223,9 @@
 </main>
 
 
-<script src="assets/js/staff-login.js"></script>
-
-    <script src="assets/js/api-client.js"></script>
-    <script src="assets/js/auth-integration.js"></script>
+<script src="assets/js/api-client.js"></script>
+    <script src="assets/js/auth-integration.js?v=separate-portals-20261013"></script>
+<script src="assets/js/portal-auth-ui.js"></script>
 </body>
 
 </html>

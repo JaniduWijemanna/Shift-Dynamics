@@ -17,7 +17,7 @@
 
   function getMessageElement(form) {
     return form.querySelector(
-      "#loginMessage, #staffLoginMessage, #registerMessage, .sd-form-message"
+      "#loginMessage, #staffLoginMessage, #registerMessage, #vendorFormMessage, .sd-form-message"
     );
   }
 
@@ -26,8 +26,8 @@
     if (!element) return;
 
     element.textContent = text;
-    element.classList.remove("sd-error", "sd-success");
-    element.classList.add(isError ? "sd-error" : "sd-success");
+    element.classList.remove("sd-error", "sd-success", "error", "success");
+    element.classList.add(isError ? "sd-error" : "sd-success", isError ? "error" : "success");
     element.hidden = false;
   }
 
@@ -36,7 +36,7 @@
     if (!element) return;
 
     element.textContent = "";
-    element.classList.remove("sd-error", "sd-success");
+    element.classList.remove("sd-error", "sd-success", "error", "success");
   }
 
   async function registerCustomer(form) {
@@ -112,8 +112,36 @@
     window.location.href = rolePaths.Customer;
   }
 
+  async function registerVendor(form) {
+    const businessName = getValue("businessName");
+    const contactPerson = getValue("contactPerson");
+    const mobile = getValue("vendorMobile").replace(/[\s-]/g, "");
+    const email = getValue("vendorEmail").toLowerCase();
+    const address = getValue("businessAddress");
+    const specialization = getValue("specialization");
+    const password = getValue("vendorPassword", false);
+    const confirmation = getValue("confirmVendorPassword", false);
+    if (![businessName, contactPerson, mobile, email, address, specialization, password, confirmation].every(Boolean)) {
+      throw new Error("Please complete all required business and account details.");
+    }
+    if (businessName.length > 200 || contactPerson.length > 150 || address.length > 500 || specialization.length > 200) {
+      throw new Error("One or more business fields exceed the allowed length.");
+    }
+    if (mobile.length < 7 || mobile.length > 30) throw new Error("Enter a valid mobile number (7–30 characters).");
+    if (email.length > 191 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error("Enter a valid business email address.");
+    if (password.length < 8 || password.length > 100) throw new Error("Password must contain 8–100 characters.");
+    if (password !== confirmation) throw new Error("Passwords do not match.");
+    if (!document.getElementById("vendorTerms")?.checked) throw new Error("Please confirm that the information provided is correct.");
+    await window.ShiftApi.request("/api/vendors/registrations", {
+      method: "POST", body: JSON.stringify({ businessName, contactPerson, mobile, email, address, specialization, password })
+    });
+    form.reset();
+    showMessage(form, "Registration submitted. Please wait for Manager approval before using Vendor Login.");
+  }
+
   async function login(form) {
     const isStaff = form.id === "staffLoginForm";
+    const isVendor = form.id === "vendorLoginForm";
 
     const email = getValue(isStaff ? "staffEmail" : "loginEmail");
     const password = getValue(
@@ -123,6 +151,10 @@
 
     if (!email || !password) {
       throw new Error("Please enter your email and password.");
+    }
+
+    if (email.length > 191 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      throw new Error("Please enter a valid email address.");
     }
 
     const data = await window.ShiftApi.request("/api/auth/login", {
@@ -143,12 +175,14 @@
       throw new Error("This account does not have portal access.");
     }
 
-    if (!isStaff && data.role !== "Customer") {
-      throw new Error("Please use the staff portal for this account.");
+    if (isVendor && data.role !== "Vendor") {
+      throw new Error("This login page is for approved vendors only.");
     }
-
-    if (isStaff && data.role === "Customer") {
-      throw new Error("Please use the customer login for this account.");
+    if (isStaff && !["ServiceAdvisor", "Manager", "Mechanic", "Storekeeper"].includes(data.role)) {
+      throw new Error(data.role === "Vendor" ? "Please use the Vendor Login page." : "This login page is for workshop staff only.");
+    }
+    if (!isStaff && !isVendor && data.role !== "Customer") {
+      throw new Error(data.role === "Vendor" ? "Please use the Vendor Login page." : "Please use the Staff Login page.");
     }
 
     window.ShiftApi.save(data);
@@ -166,7 +200,9 @@
       const supportedForms = [
         "loginForm",
         "staffLoginForm",
-        "customerRegisterForm"
+        "customerRegisterForm",
+        "vendorLoginForm",
+        "vendorRegisterForm"
       ];
 
       if (!supportedForms.includes(form.id)) return;
@@ -192,6 +228,8 @@
 
         if (form.id === "customerRegisterForm") {
           await registerCustomer(form);
+        } else if (form.id === "vendorRegisterForm") {
+          await registerVendor(form);
         } else {
           await login(form);
         }

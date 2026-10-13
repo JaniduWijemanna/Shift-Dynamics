@@ -202,7 +202,7 @@ function mount() {
     event.preventDefault();event.stopImmediatePropagation();logout.disabled = true;
     try { await disable(); } finally {
       api.clear();
-      location.href = current.role === "Customer" ? "../login.html" : "../staff-login.html";
+      location.href = current.role === "Customer" ? "../login.html" : current.role === "Vendor" ? "../vendor-login.html" : "../staff-login.html";
     }
   }, true);
   if (localEnabled() && typeof Notification !== "undefined" && Notification.permission === "granted") {
